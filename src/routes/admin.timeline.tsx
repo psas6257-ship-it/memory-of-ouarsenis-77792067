@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { timeline as seed } from "@/data/heritage";
 import { Edit3, Plus } from "lucide-react";
 import { useState } from "react";
@@ -7,10 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { ConfirmDelete } from "@/components/ConfirmDelete";
 import { toast } from "sonner";
 
-
 type Row = { id?: any; year: string; title: string; description: string };
-
-export const Route = createFileRoute("/admin/timeline")({ component: TimelineAdmin });
 
 function TimelineAdmin() {
   const { items, add, update, remove } = useLocalList<Row>("mom-admin-timeline", seed as any);
@@ -70,3 +66,5 @@ function TimelineAdmin() {
     </div>
   );
 }
+
+export default TimelineAdmin;

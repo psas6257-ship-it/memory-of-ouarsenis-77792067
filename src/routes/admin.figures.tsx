@@ -1,8 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { figures } from "@/data/heritage";
 import { Edit3, Trash2, Plus } from "lucide-react";
-
-export const Route = createFileRoute("/admin/figures")({ component: FiguresAdmin });
 
 function FiguresAdmin() {
   return (
@@ -35,3 +32,5 @@ function FiguresAdmin() {
     </div>
   );
 }
+
+export default FiguresAdmin;

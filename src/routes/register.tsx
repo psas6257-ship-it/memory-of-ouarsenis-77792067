@@ -1,12 +1,10 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { useAuth } from "@/lib/auth";
 import { Mail, Lock, User as UserIcon, ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
-
-export const Route = createFileRoute("/register")({ component: RegisterPage });
 
 function RegisterPage() {
   const { t, i18n } = useTranslation();
@@ -26,7 +24,7 @@ function RegisterPage() {
     setBusy(true);
     try {
       await register(name.trim(), email.trim(), password);
-      navigate({ to: "/app" });
+      navigate("/app");
     } catch (e: any) {
       setErr(e.message);
     } finally {
@@ -79,3 +77,5 @@ function Field({ icon: Icon, placeholder, type, value, onChange }: any) {
     </div>
   );
 }
+
+export default RegisterPage;

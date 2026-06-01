@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { ArrowRight, ArrowLeft, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
@@ -6,15 +6,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
-export const Route = createFileRoute("/contact")({
-  component: Contact,
-  head: () => ({
-    meta: [
-      { title: "تواصل معنا — ذاكرة الجبل" },
-      { name: "description", content: "تواصل مع فريق ذاكرة الجبل." },
-    ],
-    links: [{ rel: "canonical", href: "https://memory-of-ouarsenis.lovable.app/contact" }],
-  }),
+,
 });
 
 const schema = z.object({
@@ -69,3 +61,5 @@ function Row({ icon: Icon, text }: { icon: any; text: string }) {
     </div>
   );
 }
+
+export default Contact;

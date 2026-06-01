@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { api } from "@/lib/api";
 import { Mail, ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
-
-export const Route = createFileRoute("/forgot-password")({ component: ForgotPage });
 
 function ForgotPage() {
   const { t, i18n } = useTranslation();
@@ -58,3 +56,5 @@ function ForgotPage() {
     </PhoneFrame>
   );
 }
+
+export default ForgotPage;

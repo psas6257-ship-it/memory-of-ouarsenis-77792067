@@ -1,13 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronRight, Award } from "lucide-react";
 import { figures } from "@/data/heritage";
 import { PhoneFrame } from "@/components/PhoneFrame";
 
-export const Route = createFileRoute("/figure/$id")({ component: FigurePage });
-
 function FigurePage() {
-  const { id } = Route.useParams();
+  const { id } = useParams() as any;
   const f = figures.find((x) => x.id === id);
   if (!f) return <PhoneFrame><div className="flex-1 grid place-items-center text-white/60">غير موجود</div></PhoneFrame>;
 
@@ -57,3 +55,5 @@ function FigurePage() {
     </PhoneFrame>
   );
 }
+
+export default FigurePage;

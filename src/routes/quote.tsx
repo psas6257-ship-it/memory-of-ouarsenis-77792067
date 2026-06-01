@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { quotes } from "@/data/heritage";
 import { useRef, useState } from "react";
@@ -11,8 +11,6 @@ const themes = [
   { name: "ترابي", bg: "linear-gradient(135deg, #2d1810 0%, #5c2e1a 50%, #a04a2a 100%)", accent: "#f0b890" },
   { name: "صحراوي", bg: "linear-gradient(135deg, #1f1a14 0%, #4a3a28 50%, #c4a070 100%)", accent: "#fde8c0" },
 ];
-
-export const Route = createFileRoute("/quote")({ component: QuoteGen });
 
 function QuoteGen() {
   const navigate = useNavigate();
@@ -64,7 +62,7 @@ function QuoteGen() {
     <PhoneFrame>
       <div className="flex-1 flex flex-col bg-black">
         <div className="px-4 py-3 flex items-center justify-between glass-strong">
-          <button onClick={() => navigate({ to: "/app" })} className="h-9 w-9 rounded-full bg-white/10 grid place-items-center">
+          <button onClick={() => navigate("/app")} className="h-9 w-9 rounded-full bg-white/10 grid place-items-center">
             <ArrowRight className="h-4 w-4" />
           </button>
           <p className="text-xs font-semibold">بطاقات الاقتباس</p>
@@ -118,3 +116,5 @@ function QuoteGen() {
     </PhoneFrame>
   );
 }
+
+export default QuoteGen;

@@ -1,12 +1,10 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { api } from "@/lib/api";
 import { Lock, ArrowLeft, Loader2 } from "lucide-react";
-
-export const Route = createFileRoute("/reset-password")({ component: ResetPage });
 
 const schema = z.object({
   password: z.string().min(6, "6 أحرف على الأقل").max(72),
@@ -30,7 +28,7 @@ function ResetPage() {
       const token = new URLSearchParams(location.search).get("token") || "demo";
       await api.resetPassword(token, password);
       toast.success("تم تحديث كلمة المرور");
-      navigate({ to: "/login" });
+      navigate("/login");
     } catch (e: any) { setErr(e.message || "خطأ"); } finally { setBusy(false); }
   };
 
@@ -63,3 +61,5 @@ function Field({ placeholder, value, onChange }: { placeholder: string; value: s
     </div>
   );
 }
+
+export default ResetPage;

@@ -1,11 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { books } from "@/data/content";
 import { Filter } from "lucide-react";
-
-export const Route = createFileRoute("/app/library")({ component: Library });
 
 const categories = ["الكل", "تاريخ", "أدب شعبي", "تراث لامادي", "آثار"];
 
@@ -42,7 +40,7 @@ function Library() {
 
       <div className="px-5 mt-4 grid grid-cols-2 gap-3">
         {filtered.map((b, idx) => (
-          <Link key={b.id} to="/book/$id" params={{ id: b.id }}>
+          <Link key={b.id} to={`/book/${b.id}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -65,3 +63,5 @@ function Library() {
     </div>
   );
 }
+
+export default Library;

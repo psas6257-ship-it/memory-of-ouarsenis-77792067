@@ -1,16 +1,14 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import logo from "@/assets/logo.jpeg";
 import mountain from "@/assets/mountain-hero.jpg";
 
-export const Route = createFileRoute("/")({ component: Splash });
-
 function Splash() {
   const navigate = useNavigate();
   useEffect(() => {
-    const t = setTimeout(() => navigate({ to: "/onboarding" }), 2600);
+    const t = setTimeout(() => navigate("/onboarding"), 2600);
     return () => clearTimeout(t);
   }, [navigate]);
 
@@ -74,3 +72,5 @@ function Splash() {
     </PhoneFrame>
   );
 }
+
+export default Splash;

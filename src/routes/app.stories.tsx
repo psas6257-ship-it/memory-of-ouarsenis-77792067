@@ -1,10 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { fullStories } from "@/data/heritage";
 import { Clock } from "lucide-react";
-
-export const Route = createFileRoute("/app/stories")({ component: Stories });
 
 function Stories() {
   return (
@@ -36,7 +34,7 @@ function Stories() {
             </div>
             <div className="p-5 bg-card/40">
               <p className="text-sm text-white/70 leading-relaxed line-clamp-2">{s.subtitle}</p>
-              <Link to="/story/$id" params={{ id: s.id }} className="mt-4 inline-block text-xs text-[var(--gold)] font-medium">
+              <Link to={`/story/${s.id}`} className="mt-4 inline-block text-xs text-[var(--gold)] font-medium">
                 اقرأ القصة كاملة →
               </Link>
             </div>
@@ -46,3 +44,5 @@ function Stories() {
     </div>
   );
 }
+
+export default Stories;

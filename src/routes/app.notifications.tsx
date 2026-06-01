@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { notifications } from "@/data/heritage";
@@ -6,8 +5,6 @@ import { BookOpen, Film, Bell, Sparkles } from "lucide-react";
 
 const iconFor = (t: string) =>
   t === "story" ? Sparkles : t === "book" ? BookOpen : t === "media" ? Film : Bell;
-
-export const Route = createFileRoute("/app/notifications")({ component: Notifs });
 
 function Notifs() {
   return (
@@ -42,3 +39,5 @@ function Notifs() {
     </div>
   );
 }
+
+export default Notifs;

@@ -1,8 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Shield, User, Trash2 } from "lucide-react";
-
-export const Route = createFileRoute("/admin/users")({ component: UsersAdmin });
 
 function UsersAdmin() {
   const [users, setUsers] = useState<Array<{ name: string; email: string }>>([]);
@@ -54,3 +51,5 @@ function UsersAdmin() {
     </div>
   );
 }
+
+export default UsersAdmin;

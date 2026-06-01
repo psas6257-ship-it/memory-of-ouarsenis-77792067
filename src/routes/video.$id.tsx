@@ -1,12 +1,10 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { videos } from "@/data/content";
 import { ArrowRight, Heart, Share2 } from "lucide-react";
 
-export const Route = createFileRoute("/video/$id")({ component: VideoPlayer });
-
 function VideoPlayer() {
-  const { id } = Route.useParams();
+  const { id } = useParams() as any;
   const navigate = useNavigate();
   const v = videos.find((x) => x.id === id) ?? videos[0];
   const related = videos.filter((x) => x.id !== v.id).slice(0, 6);
@@ -15,7 +13,7 @@ function VideoPlayer() {
     <PhoneFrame>
       <div className="relative flex-1 flex flex-col bg-black overflow-hidden">
         <div className="absolute top-3 right-3 z-30 safe-top">
-          <button onClick={() => navigate({ to: "/app/media" })} className="h-10 w-10 rounded-full glass-strong grid place-items-center">
+          <button onClick={() => navigate("/app/media")} className="h-10 w-10 rounded-full glass-strong grid place-items-center">
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
@@ -47,7 +45,7 @@ function VideoPlayer() {
           <h3 className="mt-6 text-sm font-semibold">فيديوهات مقترحة</h3>
           <div className="mt-3 space-y-3">
             {related.map((r) => (
-              <Link key={r.id} to="/video/$id" params={{ id: r.id }} className="flex gap-3 group">
+              <Link key={r.id} to={`/video/${r.id}`} className="flex gap-3 group">
                 <div className="relative w-32 aspect-video rounded-xl overflow-hidden shrink-0">
                   <img src={r.thumbnail} alt="" className="absolute inset-0 h-full w-full object-cover" />
                   <span className="absolute bottom-1 left-1 px-1 py-0.5 rounded bg-black/80 text-[9px]">{r.duration}</span>
@@ -64,3 +62,5 @@ function VideoPlayer() {
     </PhoneFrame>
   );
 }
+
+export default VideoPlayer;

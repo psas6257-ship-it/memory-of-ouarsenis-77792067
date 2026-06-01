@@ -1,9 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { dictionary } from "@/data/heritage";
 import { Search, Plus, Edit3, Trash2 } from "lucide-react";
 import { useState } from "react";
-
-export const Route = createFileRoute("/admin/translations")({ component: TransAdmin });
 
 function TransAdmin() {
   const [q, setQ] = useState("");
@@ -41,3 +38,5 @@ function TransAdmin() {
     </div>
   );
 }
+
+export default TransAdmin;

@@ -1,12 +1,10 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { useAuth } from "@/lib/auth";
 import { Mail, Lock, ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
-
-export const Route = createFileRoute("/login")({ component: LoginPage });
 
 function LoginPage() {
   const { t, i18n } = useTranslation();
@@ -88,3 +86,5 @@ function Field({
     </div>
   );
 }
+
+export default LoginPage;
