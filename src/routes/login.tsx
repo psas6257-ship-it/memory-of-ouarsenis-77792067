@@ -22,7 +22,7 @@ function LoginPage() {
     setBusy(true);
     try {
       const u = await login(email.trim(), password);
-      navigate({ to: u.role === "admin" ? "/admin" : "/app" });
+      navigate(u.role === "admin" ? "/admin" : "/app");
     } catch (e: any) {
       setErr(e.message);
     } finally {
