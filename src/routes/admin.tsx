@@ -6,13 +6,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-      } catch (e: any) {
-        if (e?.isRedirect) throw e;
-      }
-    }
-  },
-});
-
 const nav = [
   { to: "/admin", label: "نظرة عامة", icon: LayoutDashboard, exact: true },
   { to: "/admin/books", label: "الكتب والمخطوطات", icon: BookOpen },

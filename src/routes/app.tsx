@@ -3,10 +3,6 @@ import { PhoneFrame } from "@/components/PhoneFrame";
 import { BottomNav } from "@/components/BottomNav";
 import { InstallPrompt } from "@/components/InstallPrompt";
 
-    }
-  },
-});
-
 function AppLayout() {
   return (
     <PhoneFrame>

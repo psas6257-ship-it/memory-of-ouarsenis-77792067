@@ -3,9 +3,6 @@ import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { ArrowRight, ArrowLeft, Mountain } from "lucide-react";
 
-,
-});
-
 function About() {
   const { t, i18n } = useTranslation();
   const BackIcon = i18n.dir() === "rtl" ? ArrowRight : ArrowLeft;

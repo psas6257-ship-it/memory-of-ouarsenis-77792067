@@ -6,9 +6,6 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
-,
-});
-
 const schema = z.object({
   name: z.string().trim().min(2).max(80),
   email: z.string().email().max(255),
