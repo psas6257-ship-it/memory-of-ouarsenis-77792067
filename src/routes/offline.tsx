@@ -1,8 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { WifiOff, RefreshCw } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
-export const Route = createFileRoute("/offline")({ component: OfflinePage });
 
 function OfflinePage() {
   const { t } = useTranslation();
@@ -29,3 +27,5 @@ function OfflinePage() {
     </div>
   );
 }
+
+export default OfflinePage;

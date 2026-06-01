@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { books } from "@/data/content";
@@ -7,10 +7,8 @@ import { shareContent } from "@/lib/share";
 import { track } from "@/lib/analytics";
 import { ArrowRight, Download, Bookmark, BookmarkCheck, Sun, Moon, Share2, ChevronRight, ChevronLeft } from "lucide-react";
 
-export const Route = createFileRoute("/read/$id")({ component: Reader });
-
 function Reader() {
-  const { id } = Route.useParams();
+  const { id } = useParams() as any;
   const navigate = useNavigate();
   const book = books.find((b) => b.id === id) ?? books[0];
   const [page, setPage] = useState(() => reader.getPage(book.id));
@@ -30,7 +28,7 @@ function Reader() {
     <PhoneFrame>
       <div className={`relative flex-1 flex flex-col ${night ? "bg-black" : "bg-[#1a1410]"}`}>
         <div className="absolute top-0 inset-x-0 z-30 safe-top px-4 py-3 flex items-center justify-between glass-strong">
-          <button onClick={() => navigate({ to: "/book/$id", params: { id } })} className="h-9 w-9 rounded-full bg-white/10 grid place-items-center">
+          <button onClick={() => navigate(`/book/${id}`)} className="h-9 w-9 rounded-full bg-white/10 grid place-items-center">
             <ArrowRight className="h-4 w-4" />
           </button>
           <div className="text-center">
@@ -80,3 +78,5 @@ function Reader() {
     </PhoneFrame>
   );
 }
+
+export default Reader;

@@ -1,14 +1,12 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronRight, Volume2, Share2, Bookmark } from "lucide-react";
 import { fullStories } from "@/data/heritage";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { useState } from "react";
 
-export const Route = createFileRoute("/story/$id")({ component: StoryPage });
-
 function StoryPage() {
-  const { id } = Route.useParams();
+  const { id } = useParams() as any;
   const story = fullStories.find((s) => s.id === id);
   const [speaking, setSpeaking] = useState(false);
 
@@ -102,3 +100,5 @@ function StoryPage() {
     </PhoneFrame>
   );
 }
+
+export default StoryPage;

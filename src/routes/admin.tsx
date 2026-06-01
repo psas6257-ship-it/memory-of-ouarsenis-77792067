@@ -1,25 +1,10 @@
-import { createFileRoute, Outlet, Link, useNavigate, useRouterState, redirect } from "@tanstack/react-router";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/lib/auth";
 import {
   LayoutDashboard, BookOpen, Feather, Map, Clock, Users, Headphones,
   Film, Bell, Globe, Settings, LogOut, Menu, X, Search,
 } from "lucide-react";
 import { useState } from "react";
-
-export const Route = createFileRoute("/admin")({
-  component: AdminLayout,
-  beforeLoad: () => {
-    if (typeof window !== "undefined") {
-      try {
-        const raw = localStorage.getItem("mom-auth-v1");
-        const u = raw ? JSON.parse(raw) : null;
-        if (!u || u.role !== "admin") throw redirect({ to: "/login" });
-      } catch (e: any) {
-        if (e?.isRedirect) throw e;
-      }
-    }
-  },
-});
 
 const nav = [
   { to: "/admin", label: "نظرة عامة", icon: LayoutDashboard, exact: true },
@@ -39,10 +24,10 @@ const nav = [
 function AdminLayout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = useLocation().pathname;
   const [open, setOpen] = useState(false);
 
-  const onLogout = () => { logout(); navigate({ to: "/login" }); };
+  const onLogout = () => { logout(); navigate("/login"); };
 
   return (
     <div className="min-h-screen bg-[oklch(0.14_0.015_50)] text-white" dir="rtl">
@@ -121,3 +106,5 @@ function AdminLayout() {
     </div>
   );
 }
+
+export default AdminLayout;

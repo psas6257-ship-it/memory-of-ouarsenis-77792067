@@ -1,18 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-
-export const Route = createFileRoute("/privacy")({
-  component: Privacy,
-  head: () => ({
-    meta: [
-      { title: "سياسة الخصوصية — ذاكرة الجبل" },
-      { name: "description", content: "سياسة الخصوصية وحماية البيانات في تطبيق ذاكرة الجبل." },
-    ],
-    links: [{ rel: "canonical", href: "https://memory-of-ouarsenis.lovable.app/privacy" }],
-  }),
-});
 
 function Privacy() {
   const { t, i18n } = useTranslation();
@@ -38,3 +27,5 @@ function Privacy() {
     </PhoneFrame>
   );
 }
+
+export default Privacy;

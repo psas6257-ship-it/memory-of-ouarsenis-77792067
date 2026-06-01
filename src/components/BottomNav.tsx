@@ -1,11 +1,11 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { Home, Library, BookOpen, Film, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 export function BottomNav() {
   const { t } = useTranslation();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = useLocation().pathname;
   const tabs = [
     { to: "/app", label: t("nav.home"), icon: Home, exact: true },
     { to: "/app/library", label: t("nav.library"), icon: Library },

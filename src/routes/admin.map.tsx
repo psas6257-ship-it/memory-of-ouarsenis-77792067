@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { mapLocations as seed } from "@/data/heritage";
 import { Edit3, Plus, MapPin } from "lucide-react";
 import { useState } from "react";
@@ -7,10 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { ConfirmDelete } from "@/components/ConfirmDelete";
 import { toast } from "sonner";
 
-
 type Row = { id?: any; name: string; type: string; description: string; lat?: number; lng?: number };
-
-export const Route = createFileRoute("/admin/map")({ component: MapAdmin });
 
 function MapAdmin() {
   const { items, add, update, remove } = useLocalList<Row>("mom-admin-map", seed as any);
@@ -72,3 +68,5 @@ function MapAdmin() {
     </div>
   );
 }
+
+export default MapAdmin;

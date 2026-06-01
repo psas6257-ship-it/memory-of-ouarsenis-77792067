@@ -1,11 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { audioTracks, type AudioTrack } from "@/data/heritage";
 import { Play, Pause, X, SkipBack, SkipForward, Heart } from "lucide-react";
 import { useState } from "react";
-
-export const Route = createFileRoute("/app/audio")({ component: Audio });
 
 function Audio() {
   const [current, setCurrent] = useState<AudioTrack | null>(null);
@@ -96,3 +93,5 @@ function Audio() {
     </div>
   );
 }
+
+export default Audio;

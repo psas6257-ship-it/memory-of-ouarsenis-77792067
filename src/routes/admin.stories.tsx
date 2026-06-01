@@ -1,41 +1,30 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ReactNode } from "react";
-
-function SimpleAdmin({ title, subtitle, children }: { title: string; subtitle: string; children: ReactNode }) {
-  return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>{title}</h1>
-        <p className="text-sm text-white/55 mt-1">{subtitle}</p>
-      </div>
-      {children}
-    </div>
-  );
-}
-
 import { fullStories } from "@/data/heritage";
 import { Edit3, Trash2, Plus } from "lucide-react";
 
-export const Route = createFileRoute("/admin/stories")({
-  component: () => (
-    <SimpleAdmin title="الحكايات" subtitle={`${fullStories.length} حكاية`}>
-      <button className="h-10 px-4 rounded-xl bg-[var(--gold)] text-black text-sm font-semibold flex items-center gap-2">
-        <Plus className="h-4 w-4" /> إضافة حكاية
-      </button>
-      <div className="rounded-2xl border border-white/10 divide-y divide-white/5">
+export default function AdminStories() {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>الحكايات</h1>
+          <p className="text-sm text-white/55 mt-1">إدارة قصص وحكايات الجبل</p>
+        </div>
+        <button className="px-4 h-10 rounded-xl bg-[var(--gold)] text-black text-sm font-bold flex items-center gap-2">
+          <Plus className="h-4 w-4" /> حكاية جديدة
+        </button>
+      </div>
+      <div className="grid gap-3">
         {fullStories.map((s) => (
-          <div key={s.id} className="p-4 flex items-center justify-between hover:bg-white/[0.02]">
-            <div className="min-w-0">
-              <p className="font-semibold text-sm line-clamp-1">{s.title}</p>
-              <p className="text-[11px] text-white/55 mt-0.5">{s.readTime} · {s.category}</p>
+          <div key={s.id} className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold truncate">{s.title}</p>
+              <p className="text-xs text-white/55 truncate">{s.subtitle}</p>
             </div>
-            <div className="flex gap-1.5">
-              <button className="h-8 w-8 rounded-lg bg-white/5 hover:bg-white/10 grid place-items-center"><Edit3 className="h-3.5 w-3.5" /></button>
-              <button className="h-8 w-8 rounded-lg bg-red-500/10 text-red-300 grid place-items-center"><Trash2 className="h-3.5 w-3.5" /></button>
-            </div>
+            <button className="h-9 w-9 rounded-lg bg-white/5 grid place-items-center"><Edit3 className="h-4 w-4" /></button>
+            <button className="h-9 w-9 rounded-lg bg-red-500/10 text-red-300 grid place-items-center"><Trash2 className="h-4 w-4" /></button>
           </div>
         ))}
       </div>
-    </SimpleAdmin>
-  ),
-});
+    </div>
+  );
+}

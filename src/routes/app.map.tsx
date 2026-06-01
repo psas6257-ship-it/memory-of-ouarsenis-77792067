@@ -1,12 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { mapLocations, type MapLocation } from "@/data/heritage";
 import { MapPin, X } from "lucide-react";
 import { useState } from "react";
 import mountain from "@/assets/mountain-hero.jpg";
-
-export const Route = createFileRoute("/app/map")({ component: MapScreen });
 
 function MapScreen() {
   const [sel, setSel] = useState<MapLocation | null>(null);
@@ -87,3 +84,5 @@ function MapScreen() {
     </div>
   );
 }
+
+export default MapScreen;

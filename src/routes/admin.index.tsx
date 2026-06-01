@@ -1,10 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { books, videos, stories } from "@/data/content";
 import { fullStories, figures as historicalFigures, mapLocations, dictionary } from "@/data/heritage";
 import { BookOpen, Feather, Users, Map, Film, BookText, TrendingUp, Eye, Download, Star } from "lucide-react";
 import { motion } from "framer-motion";
-
-export const Route = createFileRoute("/admin/")({ component: AdminHome });
 
 function AdminHome() {
   const stats = [
@@ -111,3 +109,5 @@ function AdminHome() {
     </div>
   );
 }
+
+export default AdminHome;

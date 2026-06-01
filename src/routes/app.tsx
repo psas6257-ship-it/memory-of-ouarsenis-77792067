@@ -1,17 +1,7 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { Outlet } from "react-router-dom";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { BottomNav } from "@/components/BottomNav";
 import { InstallPrompt } from "@/components/InstallPrompt";
-
-export const Route = createFileRoute("/app")({
-  component: AppLayout,
-  beforeLoad: () => {
-    if (typeof window !== "undefined") {
-      const raw = localStorage.getItem("mom-auth-v1");
-      if (!raw) throw redirect({ to: "/login" });
-    }
-  },
-});
 
 function AppLayout() {
   return (
@@ -26,3 +16,5 @@ function AppLayout() {
     </PhoneFrame>
   );
 }
+
+export default AppLayout;

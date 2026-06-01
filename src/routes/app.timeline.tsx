@@ -1,9 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { timeline } from "@/data/heritage";
-
-export const Route = createFileRoute("/app/timeline")({ component: Timeline });
 
 function Timeline() {
   return (
@@ -36,3 +33,5 @@ function Timeline() {
     </div>
   );
 }
+
+export default Timeline;

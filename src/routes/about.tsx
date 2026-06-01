@@ -1,20 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { ArrowRight, ArrowLeft, Mountain } from "lucide-react";
-
-export const Route = createFileRoute("/about")({
-  component: About,
-  head: () => ({
-    meta: [
-      { title: "حول التطبيق — ذاكرة الجبل" },
-      { name: "description", content: "تعرّف على مشروع ذاكرة الجبل: منصة رقمية لتراث منطقة الونشريس." },
-      { property: "og:title", content: "حول التطبيق — ذاكرة الجبل" },
-      { property: "og:description", content: "منصة رقمية فاخرة لتراث الونشريس." },
-    ],
-    links: [{ rel: "canonical", href: "https://memory-of-ouarsenis.lovable.app/about" }],
-  }),
-});
 
 function About() {
   const { t, i18n } = useTranslation();
@@ -43,3 +30,5 @@ function About() {
     </PhoneFrame>
   );
 }
+
+export default About;

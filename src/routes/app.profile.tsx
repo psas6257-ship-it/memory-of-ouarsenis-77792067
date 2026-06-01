@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { books } from "@/data/content";
@@ -8,8 +8,6 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-
-export const Route = createFileRoute("/app/profile")({ component: Profile });
 
 function Profile() {
   const { user, logout, updateProfile, changePassword } = useAuth();
@@ -38,7 +36,7 @@ function Profile() {
     { icon: Settings, label: t("settings.title"), v: "", to: "/app/settings" as const },
   ];
 
-  const onLogout = () => { logout(); navigate({ to: "/login" }); };
+  const onLogout = () => { logout(); navigate("/login"); };
 
   const saveProfile = () => {
     if (!name.trim()) return toast.error(t("profile.name"));
@@ -96,7 +94,7 @@ function Profile() {
         <h3 className="text-sm font-semibold mb-3">{t("profile.recent")}</h3>
         <div className="flex gap-3 overflow-x-auto no-scrollbar -mx-5 px-5">
           {books.slice(0, 3).map((b) => (
-            <Link key={b.id} to="/book/$id" params={{ id: b.id }} className="shrink-0 w-28">
+            <Link key={b.id} to={`/book/${b.id}`} className="shrink-0 w-28">
               <div className="aspect-[3/4] rounded-xl overflow-hidden shadow-luxe">
                 <img src={b.cover} alt={b.title} className="h-full w-full object-cover" />
               </div>
@@ -185,3 +183,5 @@ function Profile() {
     </div>
   );
 }
+
+export default Profile;

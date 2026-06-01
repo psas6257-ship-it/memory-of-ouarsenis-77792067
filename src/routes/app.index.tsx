@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { books, collections, videos } from "@/data/content";
@@ -14,8 +14,6 @@ const exploreItems = [
   { to: "/app/audio", label: "مكتبة الصوت", icon: Headphones },
 ] as const;
 
-export const Route = createFileRoute("/app/")({ component: Home });
-
 function Home() {
   const featured = books[0];
   return (
@@ -23,7 +21,7 @@ function Home() {
       <AppHeader greeting="أهلاً بك في" title="ذاكرة الجبل" />
 
       {/* Hero featured */}
-      <Link to="/book/$id" params={{ id: featured.id }} className="block px-5 mt-2">
+      <Link to={`/book/${featured.id}`} className="block px-5 mt-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +48,7 @@ function Home() {
       <Section title="تابع القراءة" link="/app/library">
         <div className="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-2">
           {books.slice(0, 4).map((b, idx) => (
-            <Link key={b.id} to="/book/$id" params={{ id: b.id }} className="shrink-0 w-44">
+            <Link key={b.id} to={`/book/${b.id}`} className="shrink-0 w-44">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -98,7 +96,7 @@ function Home() {
       <Section title="فيديوهات مختارة" link="/app/media">
         <div className="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-2">
           {videos.slice(0, 6).map((v) => (
-            <Link key={v.id} to="/video/$id" params={{ id: v.id }} className="shrink-0 w-64">
+            <Link key={v.id} to={`/video/${v.id}`} className="shrink-0 w-64">
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-luxe">
                 <img src={v.thumbnail} alt={v.title} className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-black/30" />
@@ -143,7 +141,7 @@ function Home() {
       <Section title="حكايات الجبل" link="/app/stories">
         <div className="px-5 space-y-3 pb-2">
           {fullStories.slice(0, 2).map((s) => (
-            <Link key={s.id} to="/story/$id" params={{ id: s.id }} className="block relative h-32 rounded-2xl overflow-hidden shadow-luxe">
+            <Link key={s.id} to={`/story/${s.id}`} className="block relative h-32 rounded-2xl overflow-hidden shadow-luxe">
               <img src={s.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/40 to-transparent" />
               <div className="absolute inset-0 p-4 flex flex-col justify-center max-w-[70%]">
@@ -189,3 +187,5 @@ function Section({ title, link, children }: { title: string; link?: string; chil
     </section>
   );
 }
+
+export default Home;

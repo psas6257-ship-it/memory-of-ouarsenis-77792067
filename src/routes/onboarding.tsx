@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,8 +7,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import kasbah from "@/assets/heritage-kasbah.jpg";
 import manuscript from "@/assets/heritage-manuscript.jpg";
 import music from "@/assets/heritage-music.jpg";
-
-export const Route = createFileRoute("/onboarding")({ component: Onboarding });
 
 function Onboarding() {
   const { t, i18n } = useTranslation();
@@ -22,7 +20,7 @@ function Onboarding() {
     { image: music, title: t("onboarding.slide3Title"), text: t("onboarding.slide3Text") },
   ];
 
-  const next = () => (i < slides.length - 1 ? setI(i + 1) : navigate({ to: "/login" }));
+  const next = () => (i < slides.length - 1 ? setI(i + 1) : navigate("/login"));
   const Arrow = isRtl ? ChevronLeft : ChevronRight;
 
   return (
@@ -83,3 +81,5 @@ function Onboarding() {
     </PhoneFrame>
   );
 }
+
+export default Onboarding;

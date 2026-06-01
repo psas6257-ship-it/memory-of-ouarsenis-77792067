@@ -1,11 +1,9 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { api } from "@/lib/api";
 import { track } from "@/lib/analytics";
 import { ArrowRight, Search as SearchIcon, X } from "lucide-react";
-
-export const Route = createFileRoute("/app/search")({ component: Search });
 
 const recent = ["الونشريس", "سيدي رابح", "الشعر الملحون", "تيسمسيلت"];
 
@@ -44,7 +42,7 @@ function Search() {
   return (
     <div className="safe-top px-5 pt-3">
       <div className="flex items-center gap-2">
-        <button onClick={() => navigate({ to: "/app" })} className="h-10 w-10 grid place-items-center rounded-xl glass">
+        <button onClick={() => navigate("/app")} className="h-10 w-10 grid place-items-center rounded-xl glass">
           <ArrowRight className="h-4 w-4" />
         </button>
         <div className="flex-1 relative">
@@ -85,7 +83,7 @@ function Search() {
               <div className="space-y-2">
                 {results.books.map((b, i) => (
                   <motion.div key={b.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}>
-                    <Link to="/book/$id" params={{ id: b.id }} className="flex gap-3 p-2 rounded-2xl glass">
+                    <Link to={`/book/${b.id}`} className="flex gap-3 p-2 rounded-2xl glass">
                       <img src={b.cover} alt="" className="h-16 w-12 object-cover rounded-lg" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold line-clamp-1">{b.title}</p>
@@ -102,7 +100,7 @@ function Search() {
               <h3 className="text-xs font-semibold text-white/60 mb-2">الفيديوهات ({results.videos.length})</h3>
               <div className="grid grid-cols-2 gap-3">
                 {results.videos.map((v) => (
-                  <Link key={v.id} to="/video/$id" params={{ id: v.id }}>
+                  <Link key={v.id} to={`/video/${v.id}`}>
                     <div className="aspect-video rounded-xl overflow-hidden">
                       <img src={v.thumbnail} alt="" className="h-full w-full object-cover" />
                     </div>
@@ -117,7 +115,7 @@ function Search() {
               <h3 className="text-xs font-semibold text-white/60 mb-2">الحكايات ({results.stories.length})</h3>
               <div className="space-y-2">
                 {results.stories.slice(0, 6).map((s: any) => (
-                  <Link key={s.id} to="/story/$id" params={{ id: s.id }} className="block p-3 rounded-2xl glass">
+                  <Link key={s.id} to={`/story/${s.id}`} className="block p-3 rounded-2xl glass">
                     <p className="text-sm font-semibold line-clamp-1">{s.title}</p>
                     <p className="text-[11px] text-white/50 mt-0.5 line-clamp-1">{s.subtitle}</p>
                   </Link>
@@ -130,7 +128,7 @@ function Search() {
               <h3 className="text-xs font-semibold text-white/60 mb-2">الشخصيات ({results.figures.length})</h3>
               <div className="grid grid-cols-3 gap-2">
                 {results.figures.slice(0, 6).map((f: any) => (
-                  <Link key={f.id} to="/figure/$id" params={{ id: f.id }} className="text-center">
+                  <Link key={f.id} to={`/figure/${f.id}`} className="text-center">
                     <img src={f.portrait} alt="" className="aspect-square w-full object-cover rounded-xl" />
                     <p className="text-[10px] mt-1 line-clamp-1">{f.name}</p>
                   </Link>
@@ -147,3 +145,5 @@ function Search() {
     </div>
   );
 }
+
+export default Search;

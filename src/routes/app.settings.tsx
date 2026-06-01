@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { AppHeader } from "@/components/AppHeader";
 import { motion } from "framer-motion";
 import { Moon, Sun, Languages, Type, Download, Bell, Shield, Info, ChevronLeft, Sparkles, RotateCcw, Users } from "lucide-react";
@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 import { setLang as applyLang } from "@/i18n";
 import { useSettings } from "@/lib/settings";
 import { toast } from "sonner";
-
-export const Route = createFileRoute("/app/settings")({ component: Settings });
 
 function Toggle({ on, onChange }: { on: boolean; onChange: () => void }) {
   return (
@@ -129,3 +127,5 @@ function LinkRow({ icon: Icon, label, to }: { icon: any; label: string; to: stri
     </Link>
   );
 }
+
+export default Settings;

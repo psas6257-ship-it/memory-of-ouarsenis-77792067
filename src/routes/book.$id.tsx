@@ -1,14 +1,12 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { books } from "@/data/content";
 import { ArrowRight, BookOpen, Bookmark, Download, Heart, Share2 } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/book/$id")({ component: BookDetail });
-
 function BookDetail() {
-  const { id } = Route.useParams();
+  const { id } = useParams() as any;
   const navigate = useNavigate();
   const [fav, setFav] = useState(false);
   const book = books.find((b) => b.id === id) ?? books[0];
@@ -21,7 +19,7 @@ function BookDetail() {
           <img src={book.cover} alt={book.title} className="absolute inset-0 h-full w-full object-cover scale-110 blur-md opacity-50" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
           <div className="absolute top-4 inset-x-4 flex items-center justify-between safe-top z-10">
-            <button onClick={() => navigate({ to: "/app/library" })} className="h-10 w-10 rounded-full glass-strong grid place-items-center">
+            <button onClick={() => navigate("/app/library")} className="h-10 w-10 rounded-full glass-strong grid place-items-center">
               <ArrowRight className="h-4 w-4" />
             </button>
             <div className="flex gap-2">
@@ -97,8 +95,7 @@ function BookDetail() {
             <Download className="h-4.5 w-4.5 text-[var(--gold)]" />
           </a>
           <Link
-            to="/read/$id"
-            params={{ id: book.id }}
+            to={`/read/${book.id}`}
             className="flex-1 h-12 rounded-2xl flex items-center justify-center gap-2 font-semibold text-sm text-black shadow-lg"
             style={{ background: "linear-gradient(135deg, var(--gold), var(--clay))" }}
           >
@@ -110,3 +107,5 @@ function BookDetail() {
     </PhoneFrame>
   );
 }
+
+export default BookDetail;

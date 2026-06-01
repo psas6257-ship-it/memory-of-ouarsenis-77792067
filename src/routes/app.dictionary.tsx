@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { dictionary } from "@/data/heritage";
@@ -6,8 +5,6 @@ import { Search, Volume2 } from "lucide-react";
 import { useMemo, useState } from "react";
 
 const cats = ["الكل", "لباس", "طعام", "أدوات", "أمكنة", "حالات", "حرف"] as const;
-
-export const Route = createFileRoute("/app/dictionary")({ component: Dict });
 
 function Dict() {
   const [q, setQ] = useState("");
@@ -88,3 +85,5 @@ function Dict() {
     </div>
   );
 }
+
+export default Dict;

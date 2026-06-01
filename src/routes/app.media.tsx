@@ -1,11 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AppHeader } from "@/components/AppHeader";
 import { videos } from "@/data/content";
 import { Play } from "lucide-react";
-
-export const Route = createFileRoute("/app/media")({ component: Media });
 
 const cats = ["الكل", "وثائقي", "حكايات", "موسيقى", "آثار", "حرف", "مباشر"];
 
@@ -32,7 +30,7 @@ function Media() {
 
       {/* Featured big card */}
       {filtered[0] && (
-        <Link to="/video/$id" params={{ id: filtered[0].id }} className="block px-5 mt-4">
+        <Link to={`/video/${filtered[0].id}`} className="block px-5 mt-4">
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-luxe">
             <img src={filtered[0].thumbnail} alt="" className="absolute inset-0 h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
@@ -51,7 +49,7 @@ function Media() {
 
       <div className="px-5 mt-5 grid grid-cols-2 gap-3">
         {filtered.slice(1).map((v, idx) => (
-          <Link key={v.id} to="/video/$id" params={{ id: v.id }}>
+          <Link key={v.id} to={`/video/${v.id}`}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,3 +75,5 @@ function Media() {
     </div>
   );
 }
+
+export default Media;

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { notifications as seed } from "@/data/heritage";
 import { Edit3, Plus, Bell, Send } from "lucide-react";
 import { useState } from "react";
@@ -7,10 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { ConfirmDelete } from "@/components/ConfirmDelete";
 import { toast } from "sonner";
 
-
 type Row = { id?: any; title: string; body: string; type?: string; date?: string };
-
-export const Route = createFileRoute("/admin/notifications")({ component: NotifAdmin });
 
 function NotifAdmin() {
   const { items, add, update, remove } = useLocalList<Row>("mom-admin-notif", seed as any);
@@ -74,3 +70,5 @@ function NotifAdmin() {
     </div>
   );
 }
+
+export default NotifAdmin;
