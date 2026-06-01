@@ -15,3 +15,4 @@ function SimpleAdmin({ title, subtitle, children }: { title: string; subtitle: s
 import { fullStories } from "@/data/heritage";
 import { Edit3, Trash2, Plus } from "lucide-react";
 
+export default SimpleAdmin;
