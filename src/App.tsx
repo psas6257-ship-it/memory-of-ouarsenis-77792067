@@ -58,15 +58,17 @@ const AdminUsers = lazy(() => import("./routes/admin.users"));
 const AdminVideos = lazy(() => import("./routes/admin.videos"));
 
 function RequireUser({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const loc = useLocation();
+  if (loading) return <Loading />;
   if (!user) return <Navigate to="/login" state={{ from: loc }} replace />;
   return <>{children}</>;
 }
 
 function RequireAdmin({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const loc = useLocation();
+  if (loading) return <Loading />;
   if (!user || user.role !== "admin") return <Navigate to="/login" state={{ from: loc }} replace />;
   return <>{children}</>;
 }
