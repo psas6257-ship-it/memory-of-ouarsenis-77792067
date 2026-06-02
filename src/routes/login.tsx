@@ -61,7 +61,7 @@ function LoginPage() {
         </div>
 
         <div className="mt-auto pt-8 text-center">
-          <p className="text-[10px] text-white/35">{t("auth.demoAdmin")}</p>
+          <p className="text-[10px] text-white/35">أول حساب يُسجَّل يحصل تلقائياً على صلاحيات المشرف</p>
         </div>
       </div>
     </PhoneFrame>
