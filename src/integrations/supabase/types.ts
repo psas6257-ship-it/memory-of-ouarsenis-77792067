@@ -14,16 +14,496 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      app_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: Json
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      audio_tracks: {
+        Row: {
+          artist: string
+          category: string
+          cover: string | null
+          created_at: string
+          duration: string
+          id: string
+          sort_order: number
+          title: string
+          updated_at: string
+          youtube_id: string | null
+        }
+        Insert: {
+          artist?: string
+          category?: string
+          cover?: string | null
+          created_at?: string
+          duration?: string
+          id: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          youtube_id?: string | null
+        }
+        Update: {
+          artist?: string
+          category?: string
+          cover?: string | null
+          created_at?: string
+          duration?: string
+          id?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          youtube_id?: string | null
+        }
+        Relationships: []
+      }
+      books: {
+        Row: {
+          author: string
+          category: string
+          cover: string | null
+          created_at: string
+          description: string
+          id: string
+          pages: number
+          pdf: string | null
+          sort_order: number
+          title: string
+          updated_at: string
+          year: string
+        }
+        Insert: {
+          author?: string
+          category?: string
+          cover?: string | null
+          created_at?: string
+          description?: string
+          id: string
+          pages?: number
+          pdf?: string | null
+          sort_order?: number
+          title: string
+          updated_at?: string
+          year?: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          cover?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          pages?: number
+          pdf?: string | null
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          year?: string
+        }
+        Relationships: []
+      }
+      dictionary: {
+        Row: {
+          category: string
+          created_at: string
+          example: string | null
+          id: string
+          meaning: string
+          pronunciation: string | null
+          word: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          example?: string | null
+          id?: string
+          meaning: string
+          pronunciation?: string | null
+          word: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          example?: string | null
+          id?: string
+          meaning?: string
+          pronunciation?: string | null
+          word?: string
+        }
+        Relationships: []
+      }
+      favorites: {
+        Row: {
+          created_at: string
+          item_id: string
+          kind: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          item_id: string
+          kind: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          item_id?: string
+          kind?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      figures: {
+        Row: {
+          achievements: Json
+          bio: Json
+          created_at: string
+          era: string
+          id: string
+          name: string
+          portrait: string | null
+          quote: string | null
+          region: string
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          achievements?: Json
+          bio?: Json
+          created_at?: string
+          era?: string
+          id: string
+          name: string
+          portrait?: string | null
+          quote?: string | null
+          region?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          achievements?: Json
+          bio?: Json
+          created_at?: string
+          era?: string
+          id?: string
+          name?: string
+          portrait?: string | null
+          quote?: string | null
+          region?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      map_locations: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          image: string | null
+          name: string
+          type: string
+          updated_at: string
+          x: number
+          y: number
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          id: string
+          image?: string | null
+          name: string
+          type?: string
+          updated_at?: string
+          x?: number
+          y?: number
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          image?: string | null
+          name?: string
+          type?: string
+          updated_at?: string
+          x?: number
+          y?: number
+        }
+        Relationships: []
+      }
+      notification_reads: {
+        Row: {
+          notification_id: string
+          read_at: string
+          user_id: string
+        }
+        Insert: {
+          notification_id: string
+          read_at?: string
+          user_id: string
+        }
+        Update: {
+          notification_id?: string
+          read_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notification_reads_notification_id_fkey"
+            columns: ["notification_id"]
+            isOneToOne: false
+            referencedRelation: "notifications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notifications: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          title: string
+          type: string
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          id?: string
+          title: string
+          type?: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id: string
+          name?: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reading_progress: {
+        Row: {
+          book_id: string
+          progress: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          progress?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          progress?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reading_progress_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      stories: {
+        Row: {
+          body: Json
+          category: string
+          created_at: string
+          id: string
+          image: string | null
+          quote: string | null
+          read_time: string
+          sort_order: number
+          subtitle: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: Json
+          category?: string
+          created_at?: string
+          id: string
+          image?: string | null
+          quote?: string | null
+          read_time?: string
+          sort_order?: number
+          subtitle?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: Json
+          category?: string
+          created_at?: string
+          id?: string
+          image?: string | null
+          quote?: string | null
+          read_time?: string
+          sort_order?: number
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      timeline_events: {
+        Row: {
+          created_at: string
+          description: string
+          era: string
+          id: string
+          sort_order: number
+          title: string
+          updated_at: string
+          year: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          era?: string
+          id?: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          year: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          era?: string
+          id?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          year?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          category: string
+          created_at: string
+          duration: string
+          id: string
+          sort_order: number
+          thumbnail: string | null
+          title: string
+          updated_at: string
+          youtube_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          duration?: string
+          id: string
+          sort_order?: number
+          thumbnail?: string | null
+          title: string
+          updated_at?: string
+          youtube_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          duration?: string
+          id?: string
+          sort_order?: number
+          thumbnail?: string | null
+          title?: string
+          updated_at?: string
+          youtube_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +630,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
